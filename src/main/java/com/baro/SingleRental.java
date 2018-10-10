@@ -19,13 +19,7 @@ public class SingleRental implements Rental{
     @Override
     public double getPrice(){
         Duration duration = Duration.between(startTime, endTime);
-        for (RentalPricing pricing: RentalPricing.values()) {
-            if (pricing.isWithinRange(duration)) {
-                return pricing.getPrice(duration);
-            }
-        }
-        // This line should never be executed. If so, review what duration is not covered by RentalPricing
-        return RentalPricing.HOURLY.getPrice(duration);
+        return RentalPricing.getRentalPricingFor(duration).getPrice(duration);
     }
 
 }
