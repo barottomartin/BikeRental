@@ -2,6 +2,7 @@ package com.baro;
 
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
@@ -27,21 +28,21 @@ public class SingleRentalTest {
         SingleRental rental;
 
         rental = new SingleRental(startTime, startTime.plus(10, ChronoUnit.MINUTES));
-        assertEquals(5d, rental.getPrice(), 0d);
+        assertEquals(0, BigDecimal.valueOf(5).compareTo(rental.getPrice()));
 
         rental = new SingleRental(startTime, startTime.plus(1, ChronoUnit.HOURS));
-        assertEquals(5d, rental.getPrice(), 0d);
+        assertEquals(0, BigDecimal.valueOf(5).compareTo(rental.getPrice()));
 
         rental = new SingleRental(startTime, startTime.plus(1, ChronoUnit.HOURS)
                                                     .plus(59, ChronoUnit.MINUTES));
-        assertEquals(2d * 5d, rental.getPrice(), 0d);
+        assertEquals(0, BigDecimal.valueOf(10).compareTo(rental.getPrice()));
 
         rental = new SingleRental(startTime, startTime.plus(2, ChronoUnit.HOURS));
-        assertEquals(2d * 5d, rental.getPrice(), 0d);
+        assertEquals(0, BigDecimal.valueOf(10).compareTo(rental.getPrice()));
 
         rental = new SingleRental(startTime, startTime.plus(23, ChronoUnit.HOURS)
                                                     .plus(59, ChronoUnit.MINUTES));
-        assertEquals(24d * 5d, rental.getPrice(), 0d);
+        assertEquals(0, BigDecimal.valueOf(120).compareTo(rental.getPrice()));
     }
 
     @Test
@@ -50,11 +51,11 @@ public class SingleRentalTest {
         SingleRental rental;
 
         rental = new SingleRental(startTime, startTime.plus(1, ChronoUnit.DAYS));
-        assertEquals(20d, rental.getPrice(), 0d);
+        assertEquals(0, BigDecimal.valueOf(20).compareTo(rental.getPrice()));
 
         rental = new SingleRental(startTime, startTime.plus(6, ChronoUnit.DAYS)
                                                     .plus(10, ChronoUnit.HOURS));
-        assertEquals(7d * 20d, rental.getPrice(), 0d);
+        assertEquals(0, BigDecimal.valueOf(140).compareTo(rental.getPrice()));
     }
 
     @Test
@@ -63,9 +64,9 @@ public class SingleRentalTest {
         SingleRental rental;
 
         rental = new SingleRental(startTime, startTime.plus(7, ChronoUnit.DAYS));
-        assertEquals(60d, rental.getPrice(), 0d);
+        assertEquals(0, BigDecimal.valueOf(60).compareTo(rental.getPrice()));
 
         rental = new SingleRental(startTime, startTime.plus(8, ChronoUnit.DAYS));
-        assertEquals(2d * 60d, rental.getPrice(), 0d);
+        assertEquals(0, BigDecimal.valueOf(120).compareTo(rental.getPrice()));
     }
 }

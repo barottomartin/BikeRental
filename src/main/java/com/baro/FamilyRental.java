@@ -1,5 +1,6 @@
 package com.baro;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class FamilyRental implements Rental {
@@ -15,11 +16,11 @@ public class FamilyRental implements Rental {
 
 
     @Override
-    public double getPrice() {
-        double price = 0;
+    public BigDecimal getPrice() {
+        BigDecimal price = BigDecimal.ZERO;
         for (Rental r: rentals) {
-            price += r.getPrice();
+            price = price.add(r.getPrice());
         }
-        return price * (1 - DISCOUNT_RATE);
+        return price.multiply(BigDecimal.valueOf(1 - DISCOUNT_RATE));
     }
 }

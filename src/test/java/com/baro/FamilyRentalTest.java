@@ -2,6 +2,7 @@ package com.baro;
 
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class FamilyRentalTest {
         rentals.add(new SingleRental(startTime, startTime.plus(14, ChronoUnit.DAYS)));
         FamilyRental familyRental = new FamilyRental(rentals);
         // Estimated price = ( (4*5 + 3*20 + 2*60) * 0.7)
-        assertEquals(140d, familyRental.getPrice(), 0d);
+        assertEquals(0, BigDecimal.valueOf(140).compareTo(familyRental.getPrice()));
     }
 
 }

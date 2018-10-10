@@ -1,30 +1,31 @@
 package com.baro;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 
 public enum RentalPricing {
-    HOURLY(5d) {
+    HOURLY(BigDecimal.valueOf(5)) {
         @Override
-        public double getPrice(Duration duration) {
-            return Math.ceil(duration.toMinutes() / 60d) * getRate();
+        public BigDecimal getPrice(Duration duration) {
+            return getRate().multiply(BigDecimal.valueOf(Math.ceil(duration.toMinutes() / 60f)));
         }
     },
-    DAILY(20d) {
+    DAILY(BigDecimal.valueOf(20)) {
         @Override
-        public double getPrice(Duration duration) {
-            return Math.ceil(duration.toHours() / 24d) * getRate();
+        public BigDecimal getPrice(Duration duration) {
+            return getRate().multiply(BigDecimal.valueOf(Math.ceil(duration.toHours() / 24f)));
         }
     },
-    WEEKLY(60d) {
+    WEEKLY(BigDecimal.valueOf(60)) {
         @Override
-        public double getPrice(Duration duration) {
-            return Math.ceil(duration.toDays() / 7d) * getRate();
+        public BigDecimal getPrice(Duration duration) {
+            return getRate().multiply(BigDecimal.valueOf(Math.ceil(duration.toDays() / 7f)));
         }
     };
 
-    private double rate;
+    private BigDecimal rate;
 
-    RentalPricing(double rate) {
+    RentalPricing(BigDecimal rate) {
         this.rate = rate;
     }
 
@@ -37,7 +38,7 @@ public enum RentalPricing {
         return HOURLY;
     }
 
-    public abstract double getPrice(Duration duration);
+    public abstract BigDecimal getPrice(Duration duration);
 
-    protected double getRate() { return rate; }
+    protected BigDecimal getRate() { return rate; }
 }

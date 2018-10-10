@@ -1,5 +1,6 @@
 package com.baro;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Instant;
 
@@ -17,7 +18,7 @@ public class SingleRental implements Rental{
     }
 
     @Override
-    public double getPrice(){
+    public BigDecimal getPrice(){
         Duration duration = Duration.between(startTime, endTime);
         return RentalPricing.getRentalPricingFor(duration).getPrice(duration);
     }
