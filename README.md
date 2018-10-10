@@ -12,6 +12,9 @@ Clone and go to the repository root folder and then execute
 mvn clean && mvn compile && mvn test
 `
 
+## Check it out in Travis
+[![Build Status](https://travis-ci.org/barottomartin/BikeRental.svg?branch=master)](https://travis-ci.org/barottomartin/BikeRental)
+
 ## Design
 
 The main goal of the design is the ability to calculate the price of
