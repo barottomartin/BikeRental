@@ -12,7 +12,11 @@ Clone and go to the repository root folder and then execute
 mvn clean && mvn compile && mvn test
 `
 
-## Check it out in Travis
+## Code coverage report
+Execute `mvn cobertura:cobertura` and the coverage report will be created
+as a web page in `${project}/target/site/cobertura/index.html`
+
+## Or check it out in Travis
 [![Build Status](https://travis-ci.org/barottomartin/BikeRental.svg?branch=master)](https://travis-ci.org/barottomartin/BikeRental)
 
 ## Design
