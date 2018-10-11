@@ -16,8 +16,9 @@ mvn clean && mvn compile && mvn test
 Execute `mvn cobertura:cobertura` and the coverage report will be created
 as a web page in `${project}/target/site/cobertura/index.html`
 
-## Or check it out in Travis
+## Or check it out in Travis and Codecov
 [![Build Status](https://travis-ci.org/barottomartin/BikeRental.svg?branch=master)](https://travis-ci.org/barottomartin/BikeRental)
+[![codecov](https://codecov.io/gh/barottomartin/BikeRental/branch/master/graph/badge.svg)](https://codecov.io/gh/barottomartin/BikeRental)
 
 ## Design
 
